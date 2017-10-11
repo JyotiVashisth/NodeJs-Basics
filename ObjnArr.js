@@ -33,9 +33,11 @@ stdin.addListener("data",function(d){
     //Add an object to the array
     
     var pat=/pub/;
-    var Ob={};
+    var Ob=[];
     if(pat.test(addData)){ //if a publisher
-        Ob[addData]='';    
+        //skip
+        //Ob[addData]='';    
+         
     }
     else{
         //check which publisher to subscriber to 
@@ -43,23 +45,48 @@ stdin.addListener("data",function(d){
         var pa=/23/;
         var sub;
         if(pa.test(addData)){
-            sub='subscriber1';
+        //sub='subscriber1';
+            sub=0;
         }
         else{
-           sub='subscriber2'; 
+            //sub='subscriber2'; 
+            sub=1;
         }
         
-        Ob[sub]=addData
+    //    Ob[sub]=addData
+        
+        //Ob.push(addData);
+        
+        //add element to the arr
+        if(typeof(arr[sub])=='undefined'){
+            console.log('add new element');
+            Ob.push(addData);
+            arr.push(Ob);
+            
+        }
+        else{
+            console.log('edit the existing data');
+            arr[sub].splice(0,0,addData);   
+        }
+        console.log(arr[sub]);    
+        //Ob.push(addData);
     }
     
+    //add the object to the array
     
-    arr.push(Ob);
+    //arr.splice(sub,0,Ob);
+    //arr.push(Ob);
     
+    console.log('arr length is :',arr.length);
     
-    for(var v in arr){
+    for(var i=0;i<arr.length;i++){
+        console.log('i: ',i,', value: ',arr[i] );
+    }
+    
+    /*for(var v in arr){
         console.log(arr[v]);
     }
-    
+    */
     
     /*edit-1
     var keys=Object.keys(Lis).length;
