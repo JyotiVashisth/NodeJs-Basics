@@ -17,10 +17,15 @@ stdin.addListener("data",function(d){
     console.log('length is: ',keys);
     count++;
     
-//view the items added
+    //view the properties added
     console.log('and the items are:');
-    for(var v in Lis){
+    for(var v in Lis){ //this takes the property!!!!
         console.log(v);
+    }
+    
+    //view the value of the properties
+    for(var v in Lis){
+        console.log(Lis[v]);
     }
     
 });
